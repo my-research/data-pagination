@@ -2,17 +2,13 @@ package com.github.dhslrl321.pagination;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
-public class DataSourceBean4Test {
-    @Bean
-    public DataSource dataSource() {
+public class DataSourceSupports {
+    public static DataSource dataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:3306/my-test-db");
         config.setUsername("my-test-db");
@@ -26,7 +22,6 @@ public class DataSourceBean4Test {
         return new HikariDataSource(config);
     }
 
-    @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }

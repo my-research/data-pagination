@@ -29,4 +29,20 @@ public class TodoJdbcTestHelper {
     public List<Todo> query(String sql) {
         return jdbcTemplate.query(sql, todoRowMapper);
     }
+
+    public void save(Todo todo) {
+        String sql = "INSERT INTO your_table_name (title, content, status, category, createdAt, updatedAt, deletedAt, ownerId) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        jdbcTemplate.update(sql,
+                todo.getTitle(),
+                todo.getContent(),
+                todo.getStatus(),
+                todo.getCategory(),
+                todo.getCreatedAt(),
+                todo.getUpdatedAt(),
+                todo.getDeletedAt(),
+                todo.getOwnerId()
+        );
+    }
 }

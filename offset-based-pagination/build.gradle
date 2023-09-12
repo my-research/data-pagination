@@ -24,11 +24,20 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation('org.testcontainers:mysql') //no version specified
 
     testRuntimeOnly 'com.mysql:mysql-connector-j'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:testcontainers:1.17.6"
+    testRuntimeOnly "org.testcontainers:postgresql:1.17.6"
+    testImplementation "org.testcontainers:mysql:1.19.0"
+    testImplementation "org.testcontainers:junit-jupiter:1.17.6"
 }
 
 tasks.named('test') {

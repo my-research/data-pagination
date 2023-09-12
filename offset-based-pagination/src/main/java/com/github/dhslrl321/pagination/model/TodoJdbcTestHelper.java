@@ -1,17 +1,19 @@
 package com.github.dhslrl321.pagination.model;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.github.dhslrl321.pagination.DataSourceSupports.dataSource;
-
+@Component
+@RequiredArgsConstructor
 public class TodoJdbcTestHelper {
 
-    private final JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+    private final JdbcTemplate jdbcTemplate;
     private final TodoRowMapper todoRowMapper = new TodoRowMapper();
 
     public Optional<Todo> querySingle(String sql) {

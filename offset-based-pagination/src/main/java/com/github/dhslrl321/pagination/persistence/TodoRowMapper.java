@@ -1,5 +1,8 @@
-package com.github.dhslrl321.pagination.model;
+package com.github.dhslrl321.pagination.persistence;
 
+import com.github.dhslrl321.pagination.model.Priority;
+import com.github.dhslrl321.pagination.model.Todo;
+import com.github.dhslrl321.pagination.model.TodoStatus;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -13,8 +16,8 @@ public class TodoRowMapper implements RowMapper<Todo> {
                 rs.getLong("id"),
                 rs.getString("title"),
                 rs.getString("content"),
-                rs.getString("status"),
-                rs.getString("category"),
+                TodoStatus.valueOf(rs.getString("status")),
+                Priority.valueOf(rs.getString("category")),
                 rs.getTimestamp("createdAt") == null ? null : rs.getTimestamp("createdAt").toLocalDateTime(),
                 rs.getTimestamp("updatedAt") == null ? null : rs.getTimestamp("updatedAt").toLocalDateTime(),
                 rs.getTimestamp("deletedAt") == null ? null : rs.getTimestamp("deletedAt").toLocalDateTime(),

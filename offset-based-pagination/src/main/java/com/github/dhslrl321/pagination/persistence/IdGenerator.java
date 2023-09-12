@@ -1,4 +1,4 @@
-package com.github.dhslrl321.pagination.model;
+package com.github.dhslrl321.pagination.persistence;
 
 import java.time.Instant;
 import java.util.Random;

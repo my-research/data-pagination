@@ -1,4 +1,6 @@
-CREATE TABLE simple_todos
+drop table if exists todos CASCADE;
+
+CREATE TABLE todos
 (
     id        INT AUTO_INCREMENT PRIMARY KEY,
     title     VARCHAR(255),

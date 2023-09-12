@@ -1,5 +1,6 @@
-package com.github.dhslrl321.pagination.model;
+package com.github.dhslrl321.pagination.persistence;
 
+import com.github.dhslrl321.pagination.model.Todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class TodoJdbcTestHelper {
+public class TodoRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final TodoRowMapper todoRowMapper = new TodoRowMapper();
@@ -30,15 +31,21 @@ public class TodoJdbcTestHelper {
         return jdbcTemplate.query(sql, todoRowMapper);
     }
 
+    public void save(List<Todo> todos){
+        for (Todo todo : todos) {
+            save(todo);
+        }
+    }
+
     public void save(Todo todo) {
-        String sql = "INSERT INTO your_table_name (title, content, status, category, createdAt, updatedAt, deletedAt, ownerId) " +
+        String sql = "INSERT INTO todos (title, content, status, category, createdAt, updatedAt, deletedAt, ownerId) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
                 todo.getTitle(),
                 todo.getContent(),
-                todo.getStatus(),
-                todo.getCategory(),
+                todo.getStatus().name(),
+                todo.getPriority().name(),
                 todo.getCreatedAt(),
                 todo.getUpdatedAt(),
                 todo.getDeletedAt(),

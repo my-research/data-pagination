@@ -1,3 +1,4 @@
 rootProject.name = 'data-pagination'
 
 include 'offset-based-pagination'
+include 'cursor-based-pagination'

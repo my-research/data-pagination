@@ -15,7 +15,7 @@ import static com.github.dhslrl321.pagination.model.Todo.anyTodoOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TodoDbTest
-public class PagingCalculationTest {
+public class OffsetBasedPaginationTest {
 
     @Autowired
     TodoRepository sut;

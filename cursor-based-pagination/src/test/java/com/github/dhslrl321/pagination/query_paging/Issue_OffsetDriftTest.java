@@ -2,7 +2,6 @@ package com.github.dhslrl321.pagination.query_paging;
 
 import com.github.dhslrl321.pagination.TodoDbTest;
 import com.github.dhslrl321.pagination.model.Todo;
-import com.github.dhslrl321.pagination.persistence.PageRequest;
 import com.github.dhslrl321.pagination.persistence.TodoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,13 +13,13 @@ import static com.github.dhslrl321.pagination.model.Todo.anyTodoOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TodoDbTest
-public class OffsetDriftTest {
+public class Issue_OffsetDriftTest {
 
     @Autowired
     TodoRepository sut;
 
     @Test
-    @DisplayName("paging 중간에 insert 가 되면 drift 현상이 되어 중복으로 값을 읽어올 수 있다")
+    @DisplayName("paging 중간에 insert 가 되면 drift 현상으로 인해 중복으로 값을 읽어올 수 있다")
     void name() {
         sut.save(anyTodoOf(1), anyTodoOf(2), anyTodoOf(3), anyTodoOf(4), anyTodoOf(5));
 

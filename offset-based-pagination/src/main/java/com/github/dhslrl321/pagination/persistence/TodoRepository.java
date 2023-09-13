@@ -17,18 +17,22 @@ public class TodoRepository {
     private final JdbcTemplate jdbcTemplate;
     private final TodoRowMapper todoRowMapper = new TodoRowMapper();
 
-    public Optional<Todo> querySingle(String sql) {
-        try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject(sql, todoRowMapper));
-        } catch (EmptyResultDataAccessException e) {
-            return Optional.empty();
-        } catch (IncorrectResultSizeDataAccessException e) {
-            throw new IllegalArgumentException("쿼리 결과가 여러개입니다. " + e.getMessage());
-        }
-    }
-
     public List<Todo> query(String sql) {
         return jdbcTemplate.query(sql, todoRowMapper);
+    }
+
+    public List<Todo> query(PageRequest pageRequest) {
+        String pagingQuery = String.format("SELECT * FROM todos LIMIT %d OFFSET %d",
+                pageRequest.getLimit(),
+                pageRequest.getOffset());
+
+        return jdbcTemplate.query(pagingQuery, todoRowMapper);
+    }
+
+    public void save(Todo ... todos){
+        for (Todo todo : todos) {
+            save(todo);
+        }
     }
 
     public void save(List<Todo> todos){

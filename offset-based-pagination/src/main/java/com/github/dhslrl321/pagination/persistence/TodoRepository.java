@@ -42,10 +42,11 @@ public class TodoRepository {
     }
 
     public void save(Todo todo) {
-        String sql = "INSERT INTO todos (title, content, status, category, createdAt, updatedAt, deletedAt, ownerId) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO todos (id, title, content, status, category, createdAt, updatedAt, deletedAt, ownerId) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
+                todo.getId(),
                 todo.getTitle(),
                 todo.getContent(),
                 todo.getStatus().name(),

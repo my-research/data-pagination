@@ -14,10 +14,6 @@ import static com.github.dhslrl321.pagination.persistence.IdGenerator.newId;
 
 public class Fixtures {
 
-    public static LocalDateTime year23Month(int month) {
-        return LocalDateTime.of(2023, month, 1, 1, 1, 1);
-    }
-
     public static List<Todo> generateTodos(int size) {
         List<Todo> todos = new ArrayList<>();
         Random random = new Random();

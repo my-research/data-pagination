@@ -1,4 +1,6 @@
 rootProject.name = 'data-pagination'
 
 include 'offset-based-pagination'
-include 'cursord-based-pagination'
+include 'cursor-based-pagination'
+
+include 'pagination-jpa'

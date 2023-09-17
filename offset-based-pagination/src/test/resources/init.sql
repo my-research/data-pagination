@@ -2,7 +2,7 @@ drop table if exists todos CASCADE;
 
 CREATE TABLE todos
 (
-    id        INT PRIMARY KEY,
+    id        BIGINT PRIMARY KEY,
     title     VARCHAR(255),
     content   VARCHAR(255),
     status    VARCHAR(50),

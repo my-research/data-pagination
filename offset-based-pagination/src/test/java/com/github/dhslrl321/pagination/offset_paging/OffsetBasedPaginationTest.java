@@ -1,4 +1,4 @@
-package com.github.dhslrl321.pagination.query_paging;
+package com.github.dhslrl321.pagination.offset_paging;
 
 import com.github.dhslrl321.pagination.TodoDbTest;
 import com.github.dhslrl321.pagination.model.Todo;

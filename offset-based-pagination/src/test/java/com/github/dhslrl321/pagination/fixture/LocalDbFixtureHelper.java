@@ -34,7 +34,7 @@ public class LocalDbFixtureHelper {
 
     @Test
     @DisplayName("1000만건의 데이터를 한번에 로컬 db 에 insert 합니다")
-    @Disabled
+    // @Disabled
     void name() {
         int threadCount = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
